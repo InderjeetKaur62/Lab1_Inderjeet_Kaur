@@ -55,11 +55,9 @@ struct ContentView: View {
             .frame(height: 50) // Prevents shifting of other text
         }
         .overlay(
-            // Custom alert-like view
+            // Custom alert-like view without the background dimming
             Group {
                 if showAlert {
-                    Color.black.opacity(0.5) // Background dim
-                        .edgesIgnoringSafeArea(.all)
                     VStack(spacing: 20) {
                         Text("Game Stats")
                             .font(.system(size: 36, weight: .bold))
