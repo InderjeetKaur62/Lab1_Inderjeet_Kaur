@@ -17,7 +17,7 @@ struct ContentView: View {
                 .font(.system(size: 80, weight: .bold)) // Larger and bold text
                 .padding()
             
-            VStack(spacing: 20) {
+            VStack(spacing: 30) { // Increased spacing between buttons
                 Button(action: {
                     checkAnswer(isPrime: true)
                 }) {
