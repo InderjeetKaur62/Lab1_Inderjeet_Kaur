@@ -1,3 +1,4 @@
+
 import SwiftUI
 
 struct ContentView: View {
@@ -29,7 +30,7 @@ struct ContentView: View {
             .foregroundColor(.blue)
             
             if let isCorrect = isCorrect {
-                Image(systemName: isCorrect ? "checkmark" : "xmark")
+                Image(systemName: isCorrect ? "checkmark.circle" : "xmark.circle")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .foregroundColor(isCorrect ? .green : .red)
@@ -49,8 +50,10 @@ struct ContentView: View {
     func startTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            wrongCount += 1 // Auto-fail if no selection
-            nextNumber()
+            if isCorrect == nil {
+                wrongCount += 1 // Auto-fail if no selection
+                nextNumber()
+            }
         }
     }
     
@@ -63,7 +66,9 @@ struct ContentView: View {
             isCorrect = false
             wrongCount += 1
         }
-        nextNumber()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            nextNumber()
+        }
     }
     
     func nextNumber() {
@@ -90,4 +95,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
