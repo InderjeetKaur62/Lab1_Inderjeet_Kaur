@@ -9,6 +9,7 @@ struct ContentView: View {
     @State private var showAlert = false
     
     @State private var timer: Timer? = nil
+    @State private var gameActive = true
     
     var body: some View {
         VStack(spacing: 40) {
@@ -56,7 +57,7 @@ struct ContentView: View {
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Game Stats"),
                   message: Text("Correct: \(correctCount)\nWrong: \(wrongCount)"),
-                  dismissButton: .default(Text("OK")))
+                  dismissButton: .default(Text("OK"), action: resetGame))
         }
         .onAppear {
             startTimer()
@@ -66,7 +67,7 @@ struct ContentView: View {
     func startTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            if isCorrect == nil {
+            if gameActive && isCorrect == nil {
                 wrongCount += 1 // Auto-fail if no selection
                 nextNumber()
             }
@@ -90,8 +91,20 @@ struct ContentView: View {
     func nextNumber() {
         attempts += 1
         if attempts % 10 == 0 {
+            gameActive = false
             showAlert = true
+        } else {
+            currentNumber = Int.random(in: 1...100)
+            isCorrect = nil
+            startTimer()
         }
+    }
+    
+    func resetGame() {
+        correctCount = 0
+        wrongCount = 0
+        attempts = 0
+        gameActive = true
         currentNumber = Int.random(in: 1...100)
         isCorrect = nil
         startTimer()
