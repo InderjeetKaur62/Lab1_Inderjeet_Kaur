@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ContentView: View {
@@ -17,7 +16,7 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .padding()
             
-            HStack(spacing: 40) {
+            VStack(spacing: 20) {
                 Button(action: {
                     checkAnswer(isPrime: true)
                 }) {
@@ -112,3 +111,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
