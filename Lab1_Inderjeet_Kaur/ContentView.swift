@@ -29,13 +29,16 @@ struct ContentView: View {
             .font(.title)
             .foregroundColor(.blue)
             
-            if let isCorrect = isCorrect {
-                Image(systemName: isCorrect ? "checkmark.circle" : "xmark.circle")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(isCorrect ? .green : .red)
-                    .padding()
+            ZStack {
+                if let isCorrect = isCorrect {
+                    Image(systemName: isCorrect ? "checkmark.circle" : "xmark.circle")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(isCorrect ? .green : .red)
+                        .padding()
+                }
             }
+            .frame(height: 50) // Prevents shifting of other text
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Game Stats"),
