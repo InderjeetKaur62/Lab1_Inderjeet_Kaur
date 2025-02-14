@@ -22,7 +22,7 @@ struct ContentView: View {
                     checkAnswer(isPrime: true)
                 }) {
                     Text("Prime")
-                        .font(.system(size: 24, weight: .bold)) // Larger font size
+                        .font(.system(size: 30)) // Increased font size (regular weight)
                         .padding()
                         .frame(width: 200, height: 70) // Increased button size
                         .background(Color.blue.opacity(0.7))
@@ -34,7 +34,7 @@ struct ContentView: View {
                     checkAnswer(isPrime: false)
                 }) {
                     Text("Not Prime")
-                        .font(.system(size: 24, weight: .bold)) // Larger font size
+                        .font(.system(size: 30)) // Increased font size (regular weight)
                         .padding()
                         .frame(width: 250, height: 70) // Increased button size
                         .background(Color.gray.opacity(0.7))
