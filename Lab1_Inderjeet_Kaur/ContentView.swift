@@ -77,10 +77,10 @@ struct ContentView: View {
                                 .cornerRadius(10)
                         }
                     }
-                    .padding(40)
+                    .padding(78)
                     .background(Color.black.opacity(0.7))
                     .cornerRadius(20)
-                    .frame(width: 300)
+                    .frame(width:350,height:600)
                 }
             }
         )
