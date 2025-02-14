@@ -1,3 +1,4 @@
+
 import SwiftUI
 
 struct ContentView: View {
@@ -24,7 +25,7 @@ struct ContentView: View {
                         .font(.title)
                         .padding()
                         .frame(width: 150, height: 50)
-                        .background(Color.purple.opacity(0.7))
+                        .background(Color.blue.opacity(0.7))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -36,7 +37,7 @@ struct ContentView: View {
                         .font(.title)
                         .padding()
                         .frame(width: 150, height: 50)
-                        .background(Color.orange.opacity(0.7))
+                        .background(Color.gray.opacity(0.7))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -111,4 +112,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
