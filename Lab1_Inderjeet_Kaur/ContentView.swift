@@ -1,3 +1,4 @@
+
 import SwiftUI
 
 struct ContentView: View {
@@ -14,8 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 40) {
             Text("\(currentNumber)")
-                .font(.largeTitle)
-                .fontWeight(.bold) // Bold text
+                .font(.system(size: 80, weight: .bold)) // Larger and bold text
                 .padding()
             
             VStack(spacing: 20) {
@@ -125,4 +125,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
