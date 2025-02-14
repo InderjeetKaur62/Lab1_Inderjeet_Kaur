@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ContentView: View {
@@ -23,24 +22,24 @@ struct ContentView: View {
                     checkAnswer(isPrime: true)
                 }) {
                     Text("Prime")
-                        .font(.title)
+                        .font(.system(size: 24, weight: .bold)) // Larger font size
                         .padding()
-                        .frame(width: 150, height: 50)
+                        .frame(width: 200, height: 70) // Increased button size
                         .background(Color.blue.opacity(0.7))
                         .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .cornerRadius(12)
                 }
                 
                 Button(action: {
                     checkAnswer(isPrime: false)
                 }) {
                     Text("Not Prime")
-                        .font(.title)
+                        .font(.system(size: 24, weight: .bold)) // Larger font size
                         .padding()
-                        .frame(width: 200, height: 50) // Increased width
+                        .frame(width: 250, height: 70) // Increased button size
                         .background(Color.gray.opacity(0.7))
                         .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .cornerRadius(12)
                 }
             }
             
@@ -56,8 +55,9 @@ struct ContentView: View {
             .frame(height: 50) // Prevents shifting of other text
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Game Stats"),
-                  message: Text("Correct: \(correctCount)\nWrong: \(wrongCount)"),
+            Alert(title: Text("Game Stats").font(.largeTitle),
+                  message: Text("Correct: \(correctCount)\nWrong: \(wrongCount)")
+                    .font(.system(size: 30, weight: .bold)), // Increased font size
                   dismissButton: .default(Text("OK"), action: resetGame))
         }
         .onAppear {
@@ -125,3 +125,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
