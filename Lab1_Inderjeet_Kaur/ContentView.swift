@@ -54,36 +54,12 @@ struct ContentView: View {
             }
             .frame(height: 50) // Prevents shifting of other text
         }
-        .overlay(
-            // Custom alert-like view without the background dimming
-            Group {
-                if showAlert {
-                    VStack(spacing: 20) {
-                        Text("Game Stats")
-                            .font(.system(size: 36, weight: .bold))
-                            .foregroundColor(.white)
-                        
-                        Text("Correct: \(correctCount)\nWrong: \(wrongCount)")
-                            .font(.system(size: 28, weight: .regular))
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                        
-                        Button(action: resetGame) {
-                            Text("OK")
-                                .font(.system(size: 28))
-                                .foregroundColor(.blue)
-                                .padding()
-                                .background(Color.white.opacity(0.8))
-                                .cornerRadius(10)
-                        }
-                    }
-                    .padding(78)
-                    .background(Color.black.opacity(0.7))
-                    .cornerRadius(20)
-                    .frame(width:350,height:600)
-                }
-            }
-        )
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Game Stats").font(.largeTitle),
+                  message: Text("Correct: \(correctCount)\nWrong: \(wrongCount)")
+                    .font(.system(size: 30, weight: .bold)), // Increased font size
+                  dismissButton: .default(Text("OK"), action: resetGame))
+        }
         .onAppear {
             startTimer()
         }
@@ -132,7 +108,6 @@ struct ContentView: View {
         gameActive = true
         currentNumber = Int.random(in: 1...100)
         isCorrect = nil
-        showAlert = false
         startTimer()
     }
     
