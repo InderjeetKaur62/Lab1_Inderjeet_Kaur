@@ -15,6 +15,7 @@ struct ContentView: View {
         VStack(spacing: 40) {
             Text("\(currentNumber)")
                 .font(.largeTitle)
+                .fontWeight(.bold) // Bold text
                 .padding()
             
             VStack(spacing: 20) {
