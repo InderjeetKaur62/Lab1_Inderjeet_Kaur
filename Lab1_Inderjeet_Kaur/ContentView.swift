@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ContentView: View {
@@ -17,17 +16,31 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .padding()
             
-            Button("Prime") {
-                checkAnswer(isPrime: true)
+            HStack(spacing: 40) {
+                Button(action: {
+                    checkAnswer(isPrime: true)
+                }) {
+                    Text("Prime")
+                        .font(.title)
+                        .padding()
+                        .frame(width: 150, height: 50)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    checkAnswer(isPrime: false)
+                }) {
+                    Text("Not Prime")
+                        .font(.title)
+                        .padding()
+                        .frame(width: 150, height: 50)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
-            .font(.title)
-            .foregroundColor(.blue)
-            
-            Button("Not Prime") {
-                checkAnswer(isPrime: false)
-            }
-            .font(.title)
-            .foregroundColor(.blue)
             
             ZStack {
                 if let isCorrect = isCorrect {
@@ -98,3 +111,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
